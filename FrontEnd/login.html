@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login Sophie Bluel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,21 +10,24 @@
         rel="stylesheet">
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
+    <title>Login - Sophie Bluel - Architecte d'intérieur</title>
 </head>
 
 <body>
     <header>
-        <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+        <a href="index.html">
+            <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+        </a>
         <nav>
             <ul>
-                <li>projets</li>
+                <li><a href="index.html">projets</a></li>
                 <li>contact</li>
-                <li>login</li>
+                <li><a id="log" class="actif" href="login.html">login</a></li>
                 <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
             </ul>
         </nav>
     </header>
-    <section>
+    <main>
         <div id="connexion">
             <h2 class="login">Log In</h2>
             <p id="errorMessage"></p>
@@ -34,9 +36,9 @@
             <label for="password">Mot de passe</label>
             <input type="password" id="password">
             <input type="submit" value="Se connecter" id="submit">
-            <a class="forgotYourPassword" href="#">Mot de passe oublié</a>
+            <a class="passwordForgot" href="#">Mot de passe oublié</a>
         </div>
-    </section>
+    </main>
 
     <footer>
         <nav>
@@ -45,6 +47,8 @@
             </ul>
         </nav>
     </footer>
+
+    <script type="module" src="./assets/js/login.js"></script>
 </body>
 
 </html>
