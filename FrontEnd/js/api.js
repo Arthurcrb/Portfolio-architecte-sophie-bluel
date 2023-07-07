@@ -12,5 +12,4 @@ export const fetchWorks = async () => {
       error
     )
   }
-
 }
