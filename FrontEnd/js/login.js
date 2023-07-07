@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   // Récupération des éléments du formulaire
   const emailInput = document.getElementById('email')
