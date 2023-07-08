@@ -1,21 +1,21 @@
 
-// Récupération des catégories depuis l'API
+// Fetch categories
 const fetchCategories = async () => {
   try {
     const response = await fetch('http://localhost:5678/api/categories')
     const categories = await response.json()
 
-    // Création des boutons de catégorie
+    // Create buttons
     const buttonsContainer = document.querySelector('.btns-category')
 
-    // Création du bouton "Tous" pour afficher tous les travaux
+    // Creation of the "All" button to display all works
     const allButton = document.createElement('button')
     allButton.textContent = 'Tous'
     allButton.addEventListener('click', () => filterWorks())
-    allButton.classList.add('btn-category') // Ajout de la classe CSS
+    allButton.classList.add('btn-category') // Add class CSS
     buttonsContainer.appendChild(allButton)
 
-    // Utilisation de l'objet Set pour obtenir une liste sans doublons
+    // list without duplicates
     const uniqueCategoryIds = new Set(categories.map((category) => category.id))
 
     uniqueCategoryIds.forEach((categoryId) => {
@@ -23,28 +23,25 @@ const fetchCategories = async () => {
       const category = categories.find((category) => category.id === categoryId)
       button.textContent = category.name
       button.addEventListener('click', () => filterWorks(categoryId))
-      button.classList.add('btn-category') // Ajout de la classe CSS
+      button.classList.add('btn-category') // Add class CSS
       buttonsContainer.appendChild(button)
     })
 
-    // Affichage de tous les travaux par défaut
+    // Display of all works by default
     filterWorks(null)
   } catch (error) {
-    console.error(
-      "Une erreur s'est produite lors de la récupération des catégories :",
-      error
-    )
+    console.error('erreur récupération catégories :', error)
   }
 }
 
-// Filtrage des travaux en fonction de la catégorie sélectionnée
+// Filter works based on selected category
 const filterWorks = async (categoryId = null) => {
   try {
     const response = await fetch('http://localhost:5678/api/works')
     const data = await response.json()
 
     const gallery = document.querySelector('.gallery')
-    gallery.innerHTML = '' // Efface les travaux existants
+    gallery.innerHTML = '' // Delete existing works
 
     const filteredWorks = categoryId
       ? data.filter((work) => work.categoryId === categoryId)
@@ -71,7 +68,7 @@ const filterWorks = async (categoryId = null) => {
   }
 }
 
-// Appel de la fonction pour récupérer les catégories et afficher les boutons
+// Function call
 fetchCategories()
 
 export { fetchCategories, filterWorks }
