@@ -5,28 +5,28 @@ import { filterWorks } from './index.js'
 const url = 'http://localhost:5678/api/works'
 
 // Modal 1 - Delete Works
-const modal1DeleteWorks = document.getElementById('modal-1')
+const modal1DisplayWorks = document.getElementById('modal1DisplayWorks')
 const displayModal1 = document.getElementById('displayModal1')
-const closeModalBtn1 = document.querySelector('#modal-1 .close1')
+const closeModalBtn1 = document.querySelector('#modal1DisplayWorks .close1')
 
-displayModal1.addEventListener('click', () => openModal(modal1DeleteWorks))
-closeModalBtn1.addEventListener('click', () => closeModal(modal1DeleteWorks))
+displayModal1.addEventListener('click', () => openModal(modal1DisplayWorks))
+closeModalBtn1.addEventListener('click', () => closeModal(modal1DisplayWorks))
 
 // Modal 2 - Add Form
-const modal2AddForm = document.getElementById('modal-2')
+const modal2AddForm = document.getElementById('modal2')
 const displayModal2 = document.getElementById('displayModal2')
-const closeModalBtn2 = document.querySelector('#modal-2 .close2')
+const closeModalBtn2 = document.querySelector('#modal2 .close2')
 const previousModal1 = document.querySelector('.prev-modal1')
 
 displayModal2.addEventListener('click', () => {
-  closeModal(modal1DeleteWorks)
+  closeModal(modal1DisplayWorks)
   openModal(modal2AddForm)
 })
 
 closeModalBtn2.addEventListener('click', () => closeModal(modal2AddForm))
 previousModal1.addEventListener('click', () => {
   closeModal(modal2AddForm)
-  openModal(modal1DeleteWorks)
+  openModal(modal1DisplayWorks)
 })
 
 // Common Functions
@@ -81,7 +81,7 @@ const deleteWorks = async (id) => {
 }
 
 // Confirm Deletion and Success Message
-async function messageSuccess(id) {
+const messageSuccess = async (id) => {
   const pictureDelete = 'Voulez-vous vraiment supprimer cette image ?'
   if (confirm(pictureDelete)) {
     await deleteWorks(id)
@@ -121,11 +121,17 @@ const displayImage = (imageFile, content) => {
 displayImage(imageFile, displayPicture)
 
 const isTitleExists = async (title) => {
-  const projects = await fetchWorks()
-  return projects.some((project) => project.title === title)
+  try {
+    const works = await fetchWorks()
+    return works.some((work) => work.title === title)
+  } catch (error) {
+    console.log('Erreur', error)
+    return false
+  }
 }
 
 formAddPicture.addEventListener('input', () => buttonEffect(submitButton))
+
 formAddPicture.addEventListener('submit', async (e) => {
   e.preventDefault()
   const titleInput = document.querySelector('#title_input')
@@ -137,7 +143,7 @@ formAddPicture.addEventListener('submit', async (e) => {
     !addThumbnail.get('image').name
   ) {
     generateFormError(addThumbnail)
-  } else if (await isTitleExists(url, title)) {
+  } else if (await isTitleExists(title)) {
     errorContainer.innerText =
       'Ce projet existe déjà avec ce titre! Merci de le modifier'
   } else {
