@@ -1,3 +1,4 @@
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -155,10 +156,47 @@ body {
     font-size: 14px;
 }
 
+/* topBar */
+#topBar {
+    background: #000;
+    padding: 25px;
+    visibility: hidden;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+i.fa-topBar {
+    color: #fff;
+}
+
+#topBar.active {
+    visibility: visible;
+}
+
+.modeEdit {
+    color: #eee;
+    text-align: center;
+    padding-right: 25px;
+}
+
+.modePost {
+    color: #000;
+    background: #fff;
+    border-radius: 25px;
+    padding: 8px;
+    text-align: center;
+}
+
+/* end topBar */
+
 header {
     display: flex;
     justify-content: space-between;
-    margin: 50px 0
+    margin: 70px 0
 }
 
 section {
@@ -258,7 +296,6 @@ nav li a {
 }
 
 /* button filter category */
-
 .btns-category {
     display: flex;
     justify-content: center;
@@ -332,6 +369,25 @@ a.forgotYourPassword {
 
 /* end login */
 
+
+/* topBar & texteEdit */
+.fa-regular {
+    padding-right: 5px;
+    padding-left: 20px;
+}
+
+.textEdit {
+    visibility: hidden;
+    font-size: 0.9rem;
+}
+
+.textEdit.active {
+    visibility: visible;
+}
+
+/* topBar & texteEdit */
+
+
 #contact {
     width: 50%;
     margin: auto;
@@ -385,3 +441,4 @@ footer nav ul {
     justify-content: flex-end;
     margin: 2em
 }
+

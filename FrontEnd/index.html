@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -9,11 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/db96ba9725.js" crossorigin="anonymous"></script>
+
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 
 <body>
+    <div id="topBar">
+        <i class="fa-regular fa-pen-to-square fa-topBar"></i><span class="modeEdit">Mode Edition</span>
+        <span class="modePost">Publier les changements</span>
+    </div>
     <header>
         <a href="index.html">
             <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -22,7 +29,7 @@
             <ul>
                 <li>projets</li>
                 <li>contact</li>
-                <li><a id="log" href="login.html">login</a></li>
+                <li><a id="loginLogout" href="login.html">login</a></li>
                 <li><img src="./assets/icons/instagram.png" alt="logo Instagram"></li>
             </ul>
         </nav>
@@ -44,7 +51,10 @@
             </article>
         </section>
         <section id="portfolio">
-            <h2>Mes Projets</h2>
+            <!-- Text Edit -->
+            <h2>Mes Projets <span class="textEdit"><i class="fa-regular fa-pen-to-square"></i>Modifier</span></h2>
+
+            <!-- Display button category -->
             <div class="btns-category"></div>
             <div class="gallery">
             </div>
@@ -72,6 +82,7 @@
         </nav>
     </footer>
     <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/adminLogout.js"></script>
 </body>
 
 </html>
