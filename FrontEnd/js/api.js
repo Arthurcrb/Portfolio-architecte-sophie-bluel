@@ -1,4 +1,4 @@
-// Récupération des travaux depuis l'API
+// Retrieve works from data
 const URL_API = 'http://localhost:5678/api'
 
 export const fetchWorks = async () => {
@@ -13,3 +13,4 @@ export const fetchWorks = async () => {
     )
   }
 }
+
