@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,6 +16,7 @@
 </head>
 
 <body>
+    <!-- TopBar admin -->
     <div id="topBar">
         <i class="fa-regular fa-pen-to-square fa-topBar"></i><span class="modeEdit">Mode Edition</span>
         <span class="modePost">Publier les changements</span>
@@ -29,6 +29,7 @@
             <ul>
                 <li>projets</li>
                 <li>contact</li>
+                <!-- Login Logout -->
                 <li><a id="loginLogout" href="login.html">login</a></li>
                 <li><img src="./assets/icons/instagram.png" alt="logo Instagram"></li>
             </ul>
@@ -52,8 +53,61 @@
         </section>
         <section id="portfolio">
             <!-- Text Edit -->
-            <h2>Mes Projets <span class="textEdit"><i class="fa-regular fa-pen-to-square"></i>Modifier</span></h2>
+            <h2>Mes Projets <span class="textEdit" id="displayModal1"><i
+                        class="fa-regular fa-pen-to-square"></i>Modifier</span></h2>
 
+            <div id="modal-1" class="modal">
+                <div class="modal-content">
+                    <div class="top-modal1">
+                        <div class="close1">&times;</div>
+                    </div>
+                    <h2 id="modalTitle">Galerie Photo</h2>
+                    <div class="icon-trash"></div>
+                    <div id="thumbnail-modal"></div>
+
+                    <div class="btn-modal1">
+                        <hr>
+                        <button id="displayModal2">Ajouter une photo</button>
+                        <button type="button" id="delete-gallery">Supprimer la galerie</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div id="modal-2" class="modal">
+                <div class="modal-content">
+                    <div class="top-modal2">
+                        <i class="fa-solid fa-arrow-left-long prev-modal1"></i>
+                        <span class="close2">&times;</span>
+                    </div>
+                    <h2>Ajout photo</h2>
+                    <form id="form-add">
+                        <div class="add-picture_container">
+                            <div class="display-picture"></div>
+                            <i class="fa-regular fa-image"></i>
+                            <label for="add-picture">+ Ajouter photo</label>
+                            <input type="file" id="add-picture" name="image" accept="image/png, image/jpeg">
+                            <p>jpg, png : 4mo max</p>
+                        </div>
+                        <div class="form-input">
+                            <label for="title_input">Titre</label>
+                            <input type="text" name="title" id="title_input">
+                            <label for="category_input">Catégorie</label>
+                            <select name="category" id="category_input">
+                                <option value=""></option>
+                                <option value="1">Objets</option>
+                                <option value="2">Appartements</option>
+                                <option value="3">Hotels & restaurants</option>
+                            </select>
+                            <div class="error-container">
+                            </div>
+                            <hr>
+                            <input type="submit" id="modal_form_validation" value="Valider" class="button-off">
+                    </form>
+                </div>
+            </div>
+
+            </div>
             <!-- Display button category -->
             <div class="btns-category"></div>
             <div class="gallery">
@@ -83,6 +137,7 @@
     </footer>
     <script type="module" src="./js/index.js"></script>
     <script type="module" src="./js/adminLogout.js"></script>
+    <script type="module" src="./js/modal.js"></script>
 </body>
 
 </html>
